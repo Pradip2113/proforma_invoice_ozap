@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include proforma_invoice *.css
+recursive-include proforma_invoice *.csv
+recursive-include proforma_invoice *.html
+recursive-include proforma_invoice *.ico
+recursive-include proforma_invoice *.js
+recursive-include proforma_invoice *.json
+recursive-include proforma_invoice *.md
+recursive-include proforma_invoice *.png
+recursive-include proforma_invoice *.py
+recursive-include proforma_invoice *.svg
+recursive-include proforma_invoice *.txt
+recursive-exclude proforma_invoice *.pyc
