@@ -63,6 +63,7 @@
   "rounding_adjustment",
   "rounded_total",
   "in_words",
+  "advance_paid",
   "section_break_44",
   "apply_discount_on",
   "base_discount_amount",
@@ -298,7 +299,6 @@
    "oldfieldname": "quotation_details",
    "oldfieldtype": "Table",
    "options": "ProForma Invoice Item",
-   "read_only": 1,
    "reqd": 1,
    "width": "40px"
   },
@@ -433,8 +433,7 @@
    "label": "Sales Taxes and Charges",
    "oldfieldname": "other_charges",
    "oldfieldtype": "Table",
-   "options": "Sales Taxes and Charges",
-   "read_only": 1
+   "options": "Sales Taxes and Charges"
   },
   {
    "fieldname": "section_break_39",
@@ -1055,12 +1054,17 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "advance_paid",
+   "fieldtype": "Float",
+   "label": "Advance Paid",
+   "precision": "2"
   }
  ],
  "icon": "fa fa-shopping-cart",
- "is_submittable": 1,
  "links": [],
- "modified": "2025-02-02 20:25:10.442442",
+ "modified": "2025-02-03 23:18:32.317646",
  "modified_by": "Administrator",
  "module": "ProForma Invoice",
  "name": "Proforma Invoice",
@@ -1068,8 +1072,6 @@
  "owner": "Administrator",
  "permissions": [
   {
-   "amend": 1,
-   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -1080,7 +1082,6 @@
    "role": "System Manager",
    "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],
