@@ -1,35 +1,37 @@
 # Copyright (c) 2024, quantbit and contributors
 # For license information, please see license.txt
 
+# import frappe
+
+# import json
+# from typing import Literal
+
+# import frappe
+# import frappe.utils
+# from frappe import _, qb
+# from frappe.contacts.doctype.address.address import get_company_address
+# from frappe.model.mapper import get_mapped_doc
+# # from frappe.model.utils import get_fetch_values
+# from frappe.query_builder.functions import Sum
+# from frappe.utils import add_days, cint, cstr, flt, get_link_to_form, getdate, nowdate, strip_html
+
+
+# from erpnext.accounts.party import get_party_account
+# from erpnext.controllers.selling_controller import SellingController
+
+# from erpnext.setup.doctype.item_group.item_group import get_item_group_defaults
+# # from erpnext.stock.doctype.item.item import get_item_defaults
+
+# # from erpnext.stock.get_item_details import get_default_bom, get_price_list_rate
+# from erpnext.stock.stock_balance import get_reserved_qty, update_bin_qty
+
+# form_grid_templates = {"items": "templates/form_grid/item_grid.html"}
 import frappe
+from frappe.model.document import Document
 
-import json
-from typing import Literal
-
-import frappe
-import frappe.utils
-from frappe import _, qb
-from frappe.contacts.doctype.address.address import get_company_address
-from frappe.model.mapper import get_mapped_doc
-# from frappe.model.utils import get_fetch_values
-from frappe.query_builder.functions import Sum
-from frappe.utils import add_days, cint, cstr, flt, get_link_to_form, getdate, nowdate, strip_html
-
-
-from erpnext.accounts.party import get_party_account
-from erpnext.controllers.selling_controller import SellingController
-
-from erpnext.setup.doctype.item_group.item_group import get_item_group_defaults
-# from erpnext.stock.doctype.item.item import get_item_defaults
-
-# from erpnext.stock.get_item_details import get_default_bom, get_price_list_rate
-from erpnext.stock.stock_balance import get_reserved_qty, update_bin_qty
-
-form_grid_templates = {"items": "templates/form_grid/item_grid.html"}
-
-class ProformaInvoice(SellingController):
-	def __init__(self, *args, **kwargs):
-		super(ProformaInvoice, self).__init__(*args, **kwargs)
+class ProformaInvoice(Document):
+	# def __init__(self, *args, **kwargs):
+	# 	super(ProformaInvoice, self).__init__(*args, **kwargs)
 
 	# @frappe.whitelist()
 	# def falgset(self):
@@ -39,6 +41,25 @@ class ProformaInvoice(SellingController):
 	def getitems(self):
 		sales_order_doc = frappe.get_doc("Sales Order", self.sales_order)
 		self.taxes_and_charges = sales_order_doc.taxes_and_charges
+		self.customer_address = sales_order_doc.customer_address
+		self.address_display = sales_order_doc.address_display
+		self.contact_person = sales_order_doc.contact_person
+		self.contact_display = sales_order_doc.contact_display
+		self.contact_mobile = sales_order_doc.contact_mobile
+		self.shipping_address_name = sales_order_doc.shipping_address_name
+		self.shipping_address = sales_order_doc.shipping_address
+		self.company_address = sales_order_doc.company_address
+		self.company_address_display = sales_order_doc.company_address_display
+
+		self.total_qty = sales_order_doc.total_qty
+		self.total = sales_order_doc.total
+		self.total_taxes_and_charges = sales_order_doc.total_taxes_and_charges
+		self.grand_total = sales_order_doc.grand_total
+		self.rounding_adjustment = sales_order_doc.rounding_adjustment
+		self.rounded_total = sales_order_doc.rounded_total
+		self.in_words = sales_order_doc.in_words
+  
+  
 		for oc in sales_order_doc.get("items"):
 			qty_difference = oc.qty - oc.delivered_qty
 			if qty_difference > 0:
