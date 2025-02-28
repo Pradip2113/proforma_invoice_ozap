@@ -130,6 +130,7 @@ class AccountsController(TransactionBase):
 				"Sales Order",
 				"Purchase Invoice",
 				"Sales Invoice",
+				"Proforma Invoice",
 			)
 			if self.doctype in relevant_docs:
 				self.set_payment_schedule()
@@ -505,6 +506,7 @@ class AccountsController(TransactionBase):
 			"Purchase Receipt",
 			"Delivery Note",
 			"Quotation",
+			"Proforma Invoice",
 		]:
 			if self.get("group_same_items"):
 				self.group_similar_items()
@@ -1049,6 +1051,7 @@ class AccountsController(TransactionBase):
 			"Purchase Receipt",
 			"Purchase Invoice",
 			"Stock Entry",
+			"Proforma Invoice",
 		]:
 			self.validate_account_currency(gl_dict.account, account_currency)
 

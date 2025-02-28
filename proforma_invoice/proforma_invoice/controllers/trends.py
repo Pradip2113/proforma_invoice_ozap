@@ -67,6 +67,7 @@ def get_data(filters, conditions):
 		"Purchase Invoice",
 		"Purchase Receipt",
 		"Delivery Note",
+		"Proforma Invoice",
 	]:
 		posting_date = "t1.posting_date"
 		if filters.period_based_on and conditions.get("trans") in ["Sales Invoice", "Purchase Invoice"]:

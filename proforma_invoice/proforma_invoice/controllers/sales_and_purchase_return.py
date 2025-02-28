@@ -458,6 +458,7 @@ def make_return_doc(doctype: str, source_name: str, target_doc=None, return_agai
 				"Sales Invoice",
 				"POS Invoice",
 				"Delivery Note",
+				"Proforma Invoice",
 			] and source_parent.get("is_internal_customer"):
 				type_of_transaction = "Outward"
 				warehouse = source_doc.target_warehouse

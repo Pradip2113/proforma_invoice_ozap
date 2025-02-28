@@ -190,6 +190,7 @@ class calculate_taxes_and_totals:
 					"Purchase Invoice Item",
 					"Purchase Order Item",
 					"Purchase Receipt Item",
+					"Proforma Invoice Item",
 				]:
 					item.rate_with_margin, item.base_rate_with_margin = self.calculate_margin(item)
 					if flt(item.rate_with_margin) > 0:
@@ -458,6 +459,8 @@ class calculate_taxes_and_totals:
 				"Purchase Invoice",
 				"Purchase Receipt",
 				"Supplier Quotation",
+				"Proforma Invoice",
+
 			]:
 				tax_amount *= -1.0 if (tax.add_deduct_tax == "Deduct") else 1.0
 		return tax_amount
@@ -596,6 +599,7 @@ class calculate_taxes_and_totals:
 			"Delivery Note",
 			"Sales Invoice",
 			"POS Invoice",
+			"Proforma Invoice",
 		]:
 			self.doc.base_grand_total = (
 				flt(self.doc.grand_total * self.doc.conversion_rate, self.doc.precision("base_grand_total"))

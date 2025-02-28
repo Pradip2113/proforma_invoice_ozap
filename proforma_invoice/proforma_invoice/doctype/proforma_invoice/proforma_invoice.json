@@ -525,6 +525,7 @@
   {
    "fieldname": "grand_total",
    "fieldtype": "Currency",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Grand Total",
    "oldfieldname": "grand_total_export",
@@ -536,6 +537,7 @@
   {
    "fieldname": "rounding_adjustment",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Rounding Adjustment",
    "no_copy": 1,
    "options": "currency",
@@ -1058,13 +1060,15 @@
   {
    "fieldname": "advance_paid",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Advance Paid",
    "precision": "2"
   }
  ],
  "icon": "fa fa-shopping-cart",
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-02-03 23:18:32.317646",
+ "modified": "2025-02-25 15:47:43.440969",
  "modified_by": "Administrator",
  "module": "ProForma Invoice",
  "name": "Proforma Invoice",
@@ -1072,6 +1076,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -1082,6 +1088,7 @@
    "role": "System Manager",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
