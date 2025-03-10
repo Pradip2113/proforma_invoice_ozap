@@ -46,6 +46,7 @@ class ProformaInvoice(Document):
 		customer_state = frappe.get_value("Address", self.customer_address, 'state')
 		company_state = frappe.get_value("Address", self.company_address, 'state')
 		for out in self.get('items', filters={'amount':['!=', None]}):
+			out.amount = out.qty * out.rate
 			tot_amount += float(out.amount)
 			item = frappe.get_doc("Item", out.item_code)
 			for tax in item.taxes:
@@ -61,7 +62,8 @@ class ProformaInvoice(Document):
 						out.cgst_amount = out.sgst_amount = (float(out.amount) / 100) * (gst_rate / 2)
 					else:
 						# out.igst_rate = gst_rate
-						out.igst_amount = (out.amount / 100) * gst_rate
+						avg_rate += gst_rate
+						out.igst_amount = (float(out.amount) / 100) * gst_rate
 					break
 		for out in self.get('items'):
 			tot_taxable_amount += (out.get("igst_amount",0) or 0) + (out.get("cgst_amount",0) or 0) + (out.get("sgst_amount",0) or 0)
